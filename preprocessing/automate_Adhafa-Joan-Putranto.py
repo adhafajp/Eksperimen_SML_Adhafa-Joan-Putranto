@@ -3,6 +3,7 @@ Output: X_train.csv, X_test.csv, y_train.csv, y_test.csv
 """
 
 import os
+import joblib
 import logging
 from pathlib import Path
 
@@ -181,10 +182,10 @@ def preprocess_data(X_train, X_test):
     X_test_processed.columns = clean_columns
 
     logger.info(f"Preprocessing complete. Total feature: {X_train_processed.shape[1]}")
-    return X_train_processed, X_test_processed
+    return X_train_processed, X_test_processed, preprocessor
 
 
-def save_output(X_train, X_test, y_train, y_test, output_dir: str):
+def save_output(X_train, X_test, y_train, y_test, output_dir: str, preprocessor=None):
     logger.info(f"Saving output to: {output_dir}")
     Path(output_dir).mkdir(parents=True, exist_ok=True)
 
@@ -192,6 +193,9 @@ def save_output(X_train, X_test, y_train, y_test, output_dir: str):
     X_test.to_csv(os.path.join(output_dir, "X_test.csv"), index=False)
     y_train.to_csv(os.path.join(output_dir, "y_train.csv"), index=False)
     y_test.to_csv(os.path.join(output_dir, "y_test.csv"), index=False)
+    if preprocessor is not None:
+        joblib.dump(preprocessor, os.path.join(output_dir, "preprocessor.pkl"))
+        logger.info("Preprocessor saved as preprocessor.pkl")
     logger.info("All files saved successfuly")
 
 
@@ -207,8 +211,8 @@ def main():
 
     df = load_data(str(input_file))
     X_train, X_test, y_train, y_test = split_data(df)
-    X_train_processed, X_test_processed = preprocess_data(X_train, X_test)
-    save_output(X_train_processed, X_test_processed, y_train, y_test, str(output_dir))
+    X_train_processed, X_test_processed, preprocessor  = preprocess_data(X_train, X_test)
+    save_output(X_train_processed, X_test_processed, y_train, y_test, str(output_dir), preprocessor)
 
 
 # ====
