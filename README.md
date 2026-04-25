@@ -54,7 +54,7 @@ Eksperimen_SML_Adhafa-Joan-Putranto/
 
 ### 1. Data Loading
 
-Dataset dimuat dari file CSV dan diperiksa struktur, tipe data, serta beberapa baris awalnya.
+Dataset dimuat dari file CSV dan diperiksa struktur, tipe data, serta beberapa baris awalnya
 
 ### 2. Exploratory Data Analysis (EDA)
 
@@ -90,6 +90,40 @@ File `preprocessing/automate_Adhafa-Joan-Putranto.py` merupakan konversi dari no
 
 Output disimpan di `preprocessing/credit_risk_preprocessing/`
 
+### Output Structure
+
+Setelah script dijalankan, dihasilkan 4 file CSV dengan struktur berikut:
+
+**`X_train.csv` dan `X_test.csv`** — 17 kolom fitur hasil preprocessing:
+
+| # | Kolom | Transformasi |
+|---|-------|-------------|
+| 1 | `person_age` | Capping (max 65) + StandardScaler |
+| 2 | `person_emp_length` | Capping (max 40) + StandardScaler |
+| 3 | `loan_percent_income` | Capping (max 0.6) + StandardScaler |
+| 4 | `person_income` | Log1p + Cap 99th percentile + StandardScaler |
+| 5 | `loan_amnt` | StandardScaler |
+| 6 | `cb_person_cred_hist_length` | StandardScaler |
+| 7 | `loan_int_rate` | Imputasi median per grade + StandardScaler |
+| 8 | `person_home_ownership_OTHER` | OneHotEncoder (drop=first) |
+| 9 | `person_home_ownership_OWN` | OneHotEncoder (drop=first) |
+| 10 | `person_home_ownership_RENT` | OneHotEncoder (drop=first) |
+| 11 | `loan_intent_EDUCATION` | OneHotEncoder (drop=first) |
+| 12 | `loan_intent_HOMEIMPROVEMENT` | OneHotEncoder (drop=first) |
+| 13 | `loan_intent_MEDICAL` | OneHotEncoder (drop=first) |
+| 14 | `loan_intent_PERSONAL` | OneHotEncoder (drop=first) |
+| 15 | `loan_intent_VENTURE` | OneHotEncoder (drop=first) |
+| 16 | `cb_person_default_on_file_Y` | OneHotEncoder (drop=first) |
+| 17 | `loan_grade` | OrdinalEncoder (A=0 … G=6) |
+
+> Kategori yang di-drop (baseline): `person_home_ownership_MORTGAGE`, `loan_intent_DEBTCONSOLIDATION`, `cb_person_default_on_file_N`
+
+**`y_train.csv` dan `y_test.csv`** — 1 kolom target:
+
+| Kolom | Nilai |
+|-------|-------|
+| `loan_status` | `0` = Non-default, `1` = Default |
+
 ---
 
 ## GitHub Actions
@@ -113,7 +147,7 @@ pip install -r requirements.txt
 python preprocessing/automate_Adhafa-Joan-Putranto.py
 ```
 
-**GitHub Actions:** cukup push ke repository, workflow akan berjalan otomatis
+**GitHub Actions:** push ke repository, workflow akan berjalan otomatis
 
 ---
 
