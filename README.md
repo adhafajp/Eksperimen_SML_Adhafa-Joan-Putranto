@@ -158,3 +158,15 @@ Adhafa Joan Putranto
 - [GitHub](https://github.com/adhafajp)
 - [DagsHub](https://dagshub.com/adhafajp)
 - [Docker Hub](https://hub.docker.com/u/adhafajp)
+
+---
+
+## License & Academic Integrity
+
+**Copyright (c) 2026 Adhafa Joan Putranto. All rights reserved.**
+
+Proyek ini dikembangkan sebagai bagian dari Proyek Akhir **MLOps Expert IDCamp 2025 - Dicoding**. 
+
+1. **Bukan Open Source:** Proyek ini **TIDAK** berlisensi open-source. Penggunaan, penyalinan, atau modifikasi kode tanpa izin tertulis adalah pelanggaran hak cipta
+2. **Integritas Akademik:** Jika Anda adalah sesama mahasiswa atau peserta kursus, dilarang keras melakukan *plagiarisme* (menyalin kode ini untuk dikumpulkan sebagai tugas Anda). Tindakan plagiarisme dapat menyebabkan Anda tidak lulus atau didiskualifikasi dari program terkait
+3. **Referensi:** Anda diperbolehkan melihat kode ini untuk tujuan pembelajaran, namun jika Anda terinspirasi oleh metode tertentu, harap berikan atribusi/referensi yang sesuai ke repositori ini

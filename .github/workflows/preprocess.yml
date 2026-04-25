@@ -2,6 +2,13 @@ name: Preprocess Data
 
 on:
     push:
+      paths-ignore:
+        - 'README.md'
+        - 'LICENCE'
+        - 'LICENSE'
+        - '.gitignore'
+        - 'docs/**'
+        - 'preprocessing/Eksperimen_Adhafa-Joan-Putranto.ipynb'
     workflow_dispatch:
 
 jobs:
